@@ -40,7 +40,7 @@ const Profile = () => {
     if (!userInfo) { navigate('/login'); return; }
     const fetchOrders = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/orders/myorders', {
+        const { data } = await axios.get('https://melaku-kitchen.onrender.com/api/orders/myorders', {
           headers: { Authorization: `Bearer ${userInfo.token}` }
         });
         setOrders(data);

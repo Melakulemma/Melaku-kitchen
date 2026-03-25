@@ -21,7 +21,7 @@ const Payment = () => {
     
     try {
       setLoading(true);
-      await axios.post('http://localhost:5000/api/payments', {
+      await axios.post('https://melaku-kitchen.onrender.com/api/payments', {
         orderId,
         reference_number: referenceNumber,
         amount: 0 // Mocked amount, the backend can get it from the order

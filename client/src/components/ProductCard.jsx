@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
   };
 
   const imageUrl = product.image?.startsWith('/uploads') 
-    ? `http://localhost:5000${product.image}` 
+    ? `https://melaku-kitchen.onrender.com${product.image}` 
     : product.image;
 
   const stars = Math.round(product.rating || 4);

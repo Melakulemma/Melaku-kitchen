@@ -8,7 +8,7 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
   if (!isOpen || !product) return null;
 
   const imageUrl = product.image?.startsWith('/uploads') 
-    ? `http://localhost:5000${product.image}` 
+    ? `https://melaku-kitchen.onrender.com${product.image}` 
     : product.image;
 
   return (

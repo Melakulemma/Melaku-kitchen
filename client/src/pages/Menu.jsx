@@ -26,7 +26,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/products');
+        const { data } = await axios.get('https://melaku-kitchen.onrender.com/api/products');
         setProducts(data);
       } catch (e) {
         console.error('Fetch products error:', e);
@@ -91,7 +91,7 @@ const Menu = () => {
                       className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 flex items-center justify-between group/item border-b border-gray-50 dark:border-gray-700/30 last:border-0"
                     >
                       <div className="flex items-center gap-3">
-                        <img src={p.image?.startsWith('/') ? `http://localhost:5000${p.image}` : p.image} alt="" className="w-8 h-8 rounded-lg object-cover" />
+                        <img src={p.image?.startsWith('/') ? `https://melaku-kitchen.onrender.com${p.image}` : p.image} alt="" className="w-8 h-8 rounded-lg object-cover" />
                         <div>
                           <p className="text-sm font-bold text-gray-800 dark:text-gray-200">{i18n.language === 'am' ? p.name_am : p.name_en}</p>
                           <p className="text-[10px] text-gray-400 uppercase tracking-tighter">{p.category}</p>

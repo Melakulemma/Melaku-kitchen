@@ -26,7 +26,7 @@ const Checkout = () => {
       }
 
       setLoading(true);
-      const { data } = await axios.post('http://localhost:5000/api/orders', {
+      const { data } = await axios.post('https://melaku-kitchen.onrender.com/api/orders', {
         orderItems: cartItems,
         totalPrice: total - discount,
         discount,
@@ -66,7 +66,7 @@ const Checkout = () => {
           {cartItems.map((item, index) => (
             <div key={index} className={`flex justify-between items-center border-b dark:border-gray-700 pb-2 ${!item.product ? 'bg-red-50 dark:bg-red-900/10 p-2 rounded-lg border-red-200' : ''}`}>
               <div className="flex items-center space-x-4">
-                <img src={item.image?.startsWith('/uploads') ? `http://localhost:5000${item.image}` : item.image || 'https://via.placeholder.com/40'} alt={item.name_en} className="w-10 h-10 rounded" />
+                <img src={item.image?.startsWith('/uploads') ? `https://melaku-kitchen.onrender.com${item.image}` : item.image || 'https://via.placeholder.com/40'} alt={item.name_en} className="w-10 h-10 rounded" />
                 <div>
                   <span className="dark:text-white block">{item.name_en} x {item.qty}</span>
                   {!item.product && <span className="text-[10px] text-red-500 font-bold uppercase">⚠️ Corrupted Item (Missing ID)</span>}

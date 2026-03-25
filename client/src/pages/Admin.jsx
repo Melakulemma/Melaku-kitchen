@@ -34,9 +34,9 @@ const Admin = () => {
     setLoading(true);
     try {
       const [pRes, oRes, payRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/products'),
-        axios.get('http://localhost:5000/api/orders/all', headers).catch(() => ({ data: [] })),
-        axios.get('http://localhost:5000/api/payments', headers).catch(() => ({ data: [] })),
+        axios.get('https://melaku-kitchen.onrender.com/api/products'),
+        axios.get('https://melaku-kitchen.onrender.com/api/orders/all', headers).catch(() => ({ data: [] })),
+        axios.get('https://melaku-kitchen.onrender.com/api/payments', headers).catch(() => ({ data: [] })),
       ]);
       setProducts(pRes.data);
       setOrders(oRes.data);
@@ -60,10 +60,10 @@ const Admin = () => {
       };
 
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/products/${editId}`, productData, headers);
+        await axios.put(`https://melaku-kitchen.onrender.com/api/products/${editId}`, productData, headers);
         toast.success(`"${form.name_en}" updated successfully! ✨`);
       } else {
-        await axios.post('http://localhost:5000/api/products', productData, headers);
+        await axios.post('https://melaku-kitchen.onrender.com/api/products', productData, headers);
         toast.success(`"${form.name_en}" added successfully! 🎉`);
       }
 
@@ -106,7 +106,7 @@ const Admin = () => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post('https://melaku-kitchen.onrender.com/api/upload', formData, config);
       setForm({ ...form, image: data });
       toast.success('Image uploaded successfully! 📁');
     } catch (error) {
@@ -119,7 +119,7 @@ const Admin = () => {
   const handleDeleteProduct = async (id, name) => {
     if (!window.confirm(`Delete "${name}"?`)) return;
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`, headers);
+      await axios.delete(`https://melaku-kitchen.onrender.com/api/products/${id}`, headers);
       toast.success(`"${name}" deleted`);
       setProducts(products.filter(p => p._id !== id));
     } catch (err) {
@@ -129,7 +129,7 @@ const Admin = () => {
 
   const handleUpdateOrderStatus = async (orderId, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/orders/${orderId}/deliver`, {}, headers);
+      await axios.put(`https://melaku-kitchen.onrender.com/api/orders/${orderId}/deliver`, {}, headers);
       toast.success(`Order updated to ${status}`);
       fetchAll();
     } catch (err) {
@@ -210,7 +210,7 @@ const Admin = () => {
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Image</label>
                   <div className="flex items-center gap-3">
                     {form.image && (
-                      <img src={form.image.startsWith('/uploads') ? `http://localhost:5000${form.image}` : form.image} alt="Preview" className="w-10 h-10 rounded-lg object-cover border border-gray-200" />
+                      <img src={form.image.startsWith('/uploads') ? `https://melaku-kitchen.onrender.com${form.image}` : form.image} alt="Preview" className="w-10 h-10 rounded-lg object-cover border border-gray-200" />
                     )}
                     <div className="flex-1 relative">
                       <input 
@@ -300,7 +300,7 @@ const Admin = () => {
                     {products.map(p => (
                       <tr key={p._id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                         <td className="px-4 py-3 flex items-center gap-3">
-                          {p.image && <img src={p.image.startsWith('/uploads') ? `http://localhost:5000${p.image}` : p.image} alt={p.name_en} className="w-10 h-10 rounded-lg object-cover" />}
+                          {p.image && <img src={p.image.startsWith('/uploads') ? `https://melaku-kitchen.onrender.com${p.image}` : p.image} alt={p.name_en} className="w-10 h-10 rounded-lg object-cover" />}
                           <span className="font-medium dark:text-white">{p.name_en}</span>
                         </td>
                         <td className="px-4 py-3 text-gray-600 dark:text-gray-300">{p.name_am}</td>
