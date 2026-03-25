@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-gray-50 text-gray-900 transition-colors duration-300 antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  body.dark {
+    @apply bg-gray-950 text-gray-100;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-habesha-green hover:bg-green-700 active:scale-95 text-white font-semibold py-2.5 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-200;
+  }
+  .btn-secondary {
+    @apply bg-habesha-yellow hover:bg-yellow-400 active:scale-95 text-gray-900 font-semibold py-2.5 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-200;
+  }
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700;
+  }
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-extrabold text-gray-800 dark:text-white mb-2;
+    font-family: 'Playfair Display', serif;
+  }
+  .nav-link {
+    @apply text-gray-700 dark:text-gray-300 hover:text-habesha-green dark:hover:text-habesha-yellow font-medium transition-colors duration-200 relative;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-habesha-green rounded-full transition-all duration-300;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 bg-gray-100 dark:bg-gray-700 border border-transparent focus:border-habesha-green rounded-xl outline-none transition-all duration-200 dark:text-white placeholder-gray-400;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #008542, #fcd116);
+  border-radius: 10px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #008542, #fcd116);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero pattern */
+.hero-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+}
+
+/* Food tag badge */
+.food-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide;
+}
+
+/* Order status colors */
+.status-pending { @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300; }
+.status-preparing { @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300; }
+.status-delivered { @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300; }
+
+/* Star rating */
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.skeleton {
+  @apply bg-gray-200 dark:bg-gray-700 relative overflow-hidden;
+}
+
+.skeleton::after {
+  content: "";
+  @apply absolute inset-0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+body.dark .skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+}
