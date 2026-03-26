@@ -4,7 +4,7 @@ import { FiPhone, FiMail, FiMapPin, FiSend } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
 const info = [
-  { icon: <FiPhone />, label: 'Phone', value: '+251 91 123 4567', href: 'tel:+251911234567' },
+  { icon: <FiPhone />, label: 'Phone', value: '+251 930804410', href: 'tel:+251930804410' },
   { icon: <FiMail />, label: 'Email', value: 'hello@melakukitchen.com', href: 'mailto:hello@melakukitchen.com' },
   { icon: <FiMapPin />, label: 'Location', value: 'Bole, Addis Ababa, Ethiopia', href: '#' },
 ];
