@@ -32,18 +32,8 @@ const Login = () => {
     }
   };
 
-  const [loginMode, setLoginMode] = useState('user'); // 'user' | 'admin'
 
-  const switchMode = (mode) => {
-    setLoginMode(mode);
-    if (mode === 'admin') {
-      setEmail('admin@melaku.com');
-      setPassword('admin1234');
-    } else {
-      setEmail('');
-      setPassword('');
-    }
-  };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-green-950 to-gray-900 px-4">
@@ -58,27 +48,9 @@ const Login = () => {
             <p className="text-gray-400 mt-1">Sign in to your Melaku Kitchen account</p>
           </div>
 
-          {/* User / Admin Toggle */}
-          <div className="flex bg-white/10 rounded-xl p-1 mb-6">
-            <button
-              onClick={() => switchMode('user')}
-              className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${loginMode === 'user' ? 'bg-habesha-green text-white shadow' : 'text-gray-300 hover:text-white'}`}
-            >
-              👤 User Login
-            </button>
-            <button
-              onClick={() => switchMode('admin')}
-              className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${loginMode === 'admin' ? 'bg-habesha-yellow text-gray-900 shadow' : 'text-gray-300 hover:text-white'}`}
-            >
-              🛡️ Admin Login
-            </button>
-          </div>
 
-          {loginMode === 'admin' && (
-            <div className="mb-4 bg-habesha-yellow/10 border border-habesha-yellow/30 rounded-xl px-4 py-3 text-sm text-habesha-yellow">
-              Admin credentials have been auto-filled. Click Sign In!
-            </div>
-          )}
+
+
 
           <form onSubmit={submitHandler} className="space-y-5">
             <div>
@@ -109,8 +81,8 @@ const Login = () => {
                 </button>
               </div>
             </div>
-            <button type="submit" disabled={loading} className={`w-full justify-center text-base py-3 rounded-xl disabled:opacity-50 ${loginMode === 'admin' ? 'btn-secondary' : 'btn-primary'}`}>
-              {loading ? 'Signing in...' : loginMode === 'admin' ? '🛡️ Sign In as Admin →' : 'Sign In →'}
+            <button type="submit" disabled={loading} className="w-full justify-center text-base py-3 rounded-xl disabled:opacity-50 btn-primary">
+              {loading ? 'Signing in...' : 'Sign In →'}
             </button>
           </form>
 

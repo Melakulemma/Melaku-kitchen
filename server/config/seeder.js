@@ -21,15 +21,17 @@ const mockProducts = [
 
 const seedAdmin = async () => {
   try {
-    const adminExists = await User.findOne({ email: 'admin@melaku.com' });
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@melaku.com';
+    const adminPassword = process.env.ADMIN_PASSWORD || 'admin1234';
+    const adminExists = await User.findOne({ email: adminEmail });
     if (!adminExists) {
       await User.create({
         name: 'Admin',
-        email: 'admin@melaku.com',
-        password: 'admin1234',
+        email: adminEmail,
+        password: adminPassword,
         isAdmin: true
       });
-      console.log('Admin user created: admin@melaku.com / admin1234');
+      console.log(`Admin user created: ${adminEmail}`);
     }
 
     // Seed products if empty
