@@ -32,6 +32,9 @@ const Login = () => {
     }
   };
 
+  const [loginMode, setLoginMode] = useState('user'); // 'user' | 'admin'
+
+
 
 
 
@@ -46,6 +49,22 @@ const Login = () => {
             </div>
             <h2 className="text-3xl font-extrabold text-white">Welcome Back</h2>
             <p className="text-gray-400 mt-1">Sign in to your Melaku Kitchen account</p>
+          </div>
+
+          {/* User / Admin Toggle */}
+          <div className="flex bg-white/10 rounded-xl p-1 mb-6">
+            <button
+              onClick={() => setLoginMode('user')}
+              className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${loginMode === 'user' ? 'bg-habesha-green text-white shadow' : 'text-gray-300 hover:text-white'}`}
+            >
+              👤 User Login
+            </button>
+            <button
+              onClick={() => setLoginMode('admin')}
+              className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${loginMode === 'admin' ? 'bg-habesha-yellow text-gray-900 shadow' : 'text-gray-300 hover:text-white'}`}
+            >
+              🛡️ Admin Login
+            </button>
           </div>
 
 
@@ -81,8 +100,8 @@ const Login = () => {
                 </button>
               </div>
             </div>
-            <button type="submit" disabled={loading} className="w-full justify-center text-base py-3 rounded-xl disabled:opacity-50 btn-primary">
-              {loading ? 'Signing in...' : 'Sign In →'}
+            <button type="submit" disabled={loading} className={`w-full justify-center text-base py-3 rounded-xl disabled:opacity-50 ${loginMode === 'admin' ? 'btn-secondary' : 'btn-primary'}`}>
+              {loading ? 'Signing in...' : loginMode === 'admin' ? '🛡️ Sign In as Admin →' : 'Sign In →'}
             </button>
           </form>
 
